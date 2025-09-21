@@ -7,6 +7,8 @@ const loadTasksFromStorage = () => {
     const data = localStorage.getItem(TASKS_STORAGE_KEY);
     if (data) {
       return JSON.parse(data);
+    } else {
+      return [...sampleTasks];
     }
   } catch (e) {
     return [...sampleTasks];
