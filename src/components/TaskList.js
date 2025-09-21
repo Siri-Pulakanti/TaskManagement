@@ -34,6 +34,7 @@ function TaskList({ onEdit, searchQuery }) {
             task={task}
             onDelete={deleteTask}
             onEdit={onEdit}
+            searchQuery={searchQuery}
           />
         );
       })}

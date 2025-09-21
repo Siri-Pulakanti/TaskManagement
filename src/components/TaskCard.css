@@ -70,7 +70,6 @@
   font-weight: 500;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  text-transform: capitalize;
   margin-left: 1rem;
 }
 
@@ -111,7 +110,6 @@
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
   font-weight: 500;
-  text-transform: capitalize;
 }
 
 .task-due-date {
@@ -125,4 +123,11 @@
 }
 .task-due-date.due-soon {
   color: #f59e0b;
+}
+
+.highlight {
+  background: #fef08a;
+  color: #b45309;
+  padding: 0 2px;
+  border-radius: 3px;
 }
