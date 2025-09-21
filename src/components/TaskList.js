@@ -4,7 +4,7 @@ import "./TaskList.css";
 
 function TaskList({ onEdit }) {
   const { tasks, deleteTask } = useTaskContext();
-  if (tasks.length == 0) {
+  if (tasks?.length == 0) {
     return (
       <div className="empty-state">
         <h3>No Tasks yet</h3>
@@ -14,7 +14,7 @@ function TaskList({ onEdit }) {
   }
   return (
     <div className="task-list">
-      {tasks.map((task) => {
+      {tasks?.map((task) => {
         return (
           <TaskCard
             key={task.id}

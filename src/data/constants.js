@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+const TASKS_STORAGE_KEY = "tasks";
+
 const categories = [
   { id: "work", name: "Work", color: "#7c3aed" },
   { id: "personal", name: "Personal", color: "#059669" },
@@ -59,4 +61,4 @@ const sampleTasks = [
   },
 ];
 
-export { categories, sampleTasks };
+export { categories, sampleTasks, TASKS_STORAGE_KEY };

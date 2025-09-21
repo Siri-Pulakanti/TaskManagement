@@ -42,6 +42,21 @@
 .task-delete-button:hover {
   background: #fee2e2;
 }
+
+.task-edit-button {
+  background: none;
+  border: none;
+  color: #9ad2bb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.task-edit-button:hover {
+  background: #edfef5;
+}
 .task-title {
   font-size: 1.25rem;
   font-weight: 600;

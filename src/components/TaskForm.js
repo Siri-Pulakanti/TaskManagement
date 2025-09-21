@@ -94,15 +94,14 @@ function TaskForm({ editTaskData, onSaveEdit, onCancelEdit }) {
           </select>
         </div>
         <div className="form-group">
-          <label
-            htmlFor="category"
+          <label htmlFor="category">Task Category</label>
+          <select
+            name="category"
+            value={formData.category}
             onChange={(e) =>
               setFormData((s) => ({ ...s, category: e.target.value }))
             }
           >
-            Task Category
-          </label>
-          <select name="category" value={formData.category}>
             {categories.map((category) => {
               return (
                 <option key={category.id} value={category.name}>
