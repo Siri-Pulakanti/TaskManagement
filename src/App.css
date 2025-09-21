@@ -1,10 +1,28 @@
 .App {
-  padding: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.task-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.task-list {
+  display: grid;
+  gap: 1rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {

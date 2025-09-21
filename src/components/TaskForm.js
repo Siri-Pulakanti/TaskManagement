@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useTaskContext } from "../context/TaskContext";
 import { categories } from "../data/constants";
-import useTasks from "../hooks/useTasks";
+import "./TaskForm.css";
 
 function TaskForm() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ function TaskForm() {
     dueDate: "",
   });
   const [error, setError] = useState("");
-  const { addTask } = useTasks();
+  const { addTask } = useTaskContext();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.title.trim()) {
@@ -28,9 +29,10 @@ function TaskForm() {
   };
 
   return (
-    <div>
+    <div className="task-form">
+      <h2>Add New Task</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="title">Task Title</label>
           <input
             type="text"
@@ -42,7 +44,7 @@ function TaskForm() {
             }
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="description">Task Description</label>
           <textarea
             type="text"
@@ -55,9 +57,9 @@ function TaskForm() {
               setFormData((s) => ({ ...s, description: e.target.value }))
             }
           />
-          <p>{formData.description.length}/500</p>
+          <p className="character-count">{formData.description.length}/500</p>
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="priority">Priority</label>
           <select
             name="priority"
@@ -71,7 +73,7 @@ function TaskForm() {
             <option value="High">High</option>
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label
             htmlFor="category"
             onChange={(e) =>
@@ -90,7 +92,7 @@ function TaskForm() {
             })}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label
             htmlFor="due date"
             onChange={(e) =>
@@ -108,9 +110,11 @@ function TaskForm() {
             }
           />
         </div>
-        {error && <p>{error}</p>}
+        {error && <div className="error-msg">{error}</div>}
         <div>
-          <button type="submit">Save</button>
+          <button type="submit" className="submit-button">
+            Add Task
+          </button>
         </div>
       </form>
     </div>
