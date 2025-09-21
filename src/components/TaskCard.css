@@ -28,7 +28,20 @@
   align-items: flex-start;
   margin-bottom: 1rem;
 }
+.task-delete-button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
 
+.task-delete-button:hover {
+  background: #fee2e2;
+}
 .task-title {
   font-size: 1.25rem;
   font-weight: 600;

@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { formatDate, getDueDateStatus } from "../utils/Date";
+import ConfirmDialog from "./ConfirmDialog";
 import "./TaskCard.css";
 
-function TaskCard({ task }) {
+function TaskCard({ task, onDelete }) {
   const dueDateStatus = getDueDateStatus(task.dueDate);
+  const [showPopup, setShowPopup] = useState(false);
+  const handleConfirm = () => {
+    onDelete(task.id);
+    setShowPopup(false);
+  };
+  const handleCancel = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className={`task-card priority-${task.priority.toLowerCase()}`}>
       <div className="task-card-header">
@@ -13,6 +23,12 @@ function TaskCard({ task }) {
         >
           {task.priority}
         </span>
+        <button
+          className="task-delete-button"
+          onClick={() => setShowPopup(true)}
+        >
+          🗑️
+        </button>
       </div>
       {task.description && (
         <p className="task-description">{task.description}</p>
@@ -23,6 +39,14 @@ function TaskCard({ task }) {
           {formatDate(task.dueDate)}
         </span>
       </div>
+      {showPopup && (
+        <ConfirmDialog
+          title="Delete Task"
+          description={`Are you sure you want to Delete  ${task.title}?`}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
     </div>
   );
 }

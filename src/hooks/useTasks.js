@@ -14,5 +14,8 @@ export default function useTasks() {
       ...tasks,
     ]);
   });
-  return { tasks, addTask };
+  const deleteTask = useCallback((id) => {
+    setTasks((prev) => prev.filter((task) => task.id != id));
+  });
+  return { tasks, addTask, deleteTask };
 }

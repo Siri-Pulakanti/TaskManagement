@@ -3,7 +3,7 @@ import TaskCard from "./TaskCard";
 import "./TaskList.css";
 
 function TaskList() {
-  const { tasks } = useTaskContext();
+  const { tasks, deleteTask } = useTaskContext();
   if (tasks.length == 0) {
     return (
       <div className="empty-state">
@@ -15,7 +15,7 @@ function TaskList() {
   return (
     <div className="task-list">
       {tasks.map((task) => {
-        return <TaskCard key={task.id} task={task} />;
+        return <TaskCard key={task.id} task={task} onDelete={deleteTask} />;
       })}
     </div>
   );
