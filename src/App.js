@@ -1,16 +1,31 @@
+import { useState } from "react";
 import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import { TaskProvider } from "./context/TaskContext";
 
 function App() {
+  const [editTaskData, setEditTaskData] = useState(null);
+  const handleEditRequest = (task) => {
+    setEditTaskData(task);
+  };
+  const handleSaveEdit = () => {
+    setEditTaskData(null);
+  };
+  const handleCancelEdit = () => {
+    setEditTaskData(null);
+  };
   return (
     <TaskProvider>
       <div className="App">
         <h1>Task Management</h1>
         <div className="task-container">
-          <TaskForm />
-          <TaskList />
+          <TaskForm
+            editTaskData={editTaskData}
+            onSaveEdit={handleSaveEdit}
+            onCancelEdit={handleCancelEdit}
+          />
+          <TaskList onEdit={handleEditRequest} />
         </div>
       </div>
     </TaskProvider>

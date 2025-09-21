@@ -3,7 +3,7 @@ import { formatDate, getDueDateStatus } from "../utils/Date";
 import ConfirmDialog from "./ConfirmDialog";
 import "./TaskCard.css";
 
-function TaskCard({ task, onDelete }) {
+function TaskCard({ task, onDelete, onEdit }) {
   const dueDateStatus = getDueDateStatus(task.dueDate);
   const [showPopup, setShowPopup] = useState(false);
   const handleConfirm = () => {
@@ -23,6 +23,9 @@ function TaskCard({ task, onDelete }) {
         >
           {task.priority}
         </span>
+        <button className="task-edit-button" onClick={() => onEdit(task)}>
+          ✏️
+        </button>
         <button
           className="task-delete-button"
           onClick={() => setShowPopup(true)}
@@ -39,6 +42,7 @@ function TaskCard({ task, onDelete }) {
           {formatDate(task.dueDate)}
         </span>
       </div>
+
       {showPopup && (
         <ConfirmDialog
           title="Delete Task"

@@ -1,18 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTaskContext } from "../context/TaskContext";
 import { categories } from "../data/constants";
 import "./TaskForm.css";
 
-function TaskForm() {
+function TaskForm({ editTaskData, onSaveEdit, onCancelEdit }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     priority: "medium",
     category: "work",
     dueDate: "",
+    id: undefined,
   });
   const [error, setError] = useState("");
-  const { addTask } = useTaskContext();
+  const { addTask, editTask } = useTaskContext();
+
+  useEffect(() => {
+    if (editTaskData) {
+      setFormData(editTaskData);
+    } else {
+      setFormData({
+        title: "",
+        description: "",
+        priority: "medium",
+        category: "work",
+        dueDate: "",
+        id: undefined,
+      });
+    }
+  }, [editTask]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.title.trim()) {
@@ -24,13 +40,17 @@ function TaskForm() {
       return;
     }
     setError("");
-    console.log(formData);
-    addTask(formData);
+    if (editTaskData) {
+      editTask(formData);
+      onSaveEdit();
+    } else {
+      addTask(formData);
+    }
   };
 
   return (
     <div className="task-form">
-      <h2>Add New Task</h2>
+      <h2> {editTaskData ? "Edit Task" : "Add New Task"}</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Task Title</label>
@@ -82,7 +102,7 @@ function TaskForm() {
           >
             Task Category
           </label>
-          <select name="category">
+          <select name="category" value={formData.category}>
             {categories.map((category) => {
               return (
                 <option key={category.id} value={category.name}>
@@ -112,8 +132,13 @@ function TaskForm() {
         </div>
         {error && <div className="error-msg">{error}</div>}
         <div>
+          {editTaskData && (
+            <button onClick={onCancelEdit} className="cancel-button">
+              Cancel Edit
+            </button>
+          )}
           <button type="submit" className="submit-button">
-            Add Task
+            {editTaskData ? "Save Changes" : "Add Task"}
           </button>
         </div>
       </form>

@@ -1,7 +1,8 @@
+import ReactDOM from "react-dom";
 import "./ConfirmDialog.css";
 
 function ConfirmDialog({ title, description, onConfirm, onCancel }) {
-  return (
+  return ReactDOM.createPortal(
     <div className="confirm-dialog-backdrop">
       <div className="confirm-dialog">
         <h4>{title}</h4>
@@ -15,7 +16,8 @@ function ConfirmDialog({ title, description, onConfirm, onCancel }) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

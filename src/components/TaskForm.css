@@ -88,3 +88,24 @@
   border: 1px solid #fecaca;
   border-radius: 6px;
 }
+
+.cancel-button {
+  width: 100%;
+  background: #d91c1c;
+  color: white;
+  border: none;
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.cancel-button:hover {
+  background: #b91c1c;
+}
+
+.cancel-button:active {
+  background: #7e0f0f;
+}

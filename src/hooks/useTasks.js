@@ -17,5 +17,12 @@ export default function useTasks() {
   const deleteTask = useCallback((id) => {
     setTasks((prev) => prev.filter((task) => task.id != id));
   });
-  return { tasks, addTask, deleteTask };
+  const editTask = useCallback((updatedTask) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === updatedTask.id ? { ...task, ...updatedTask } : task
+      )
+    );
+  });
+  return { tasks, addTask, deleteTask, editTask };
 }
