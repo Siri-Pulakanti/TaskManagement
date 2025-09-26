@@ -6,6 +6,7 @@ const categories = [
   { id: "work", name: "Work", color: "#7c3aed" },
   { id: "personal", name: "Personal", color: "#059669" },
   { id: "shopping", name: "Shopping", color: "#dc2626" },
+  { id: "family", name: "Family", color: "#2563eb" },
 ];
 
 const sampleTasks = [

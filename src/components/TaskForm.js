@@ -112,16 +112,11 @@ function TaskForm({ editTaskData, onSaveEdit, onCancelEdit }) {
           </select>
         </div>
         <div className="form-group">
-          <label
-            htmlFor="due date"
-            onChange={(e) =>
-              setFormData((s) => ({ ...s, dueDate: e.target.value }))
-            }
-            required
-          >
+          <label htmlFor="due-date" required>
             Due Date
           </label>
           <input
+            name="due-date"
             type="date"
             value={formData.dueDate}
             onChange={(e) =>
