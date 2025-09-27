@@ -28,7 +28,7 @@ function TaskForm({ editTaskData, onSaveEdit, onCancelEdit }) {
         id: undefined,
       });
     }
-  }, [editTask]);
+  }, [editTaskData]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.title.trim()) {
