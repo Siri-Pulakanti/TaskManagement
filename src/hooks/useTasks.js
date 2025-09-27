@@ -36,7 +36,7 @@ export default function useTasks() {
     ]);
   });
   const deleteTask = useCallback((id) => {
-    setTasks((prev) => prev.filter((task) => task.id != id));
+    setTasks((prev) => prev.filter((task) => task.id !== id));
   });
   const editTask = useCallback((updatedTask) => {
     setTasks((prev) =>
