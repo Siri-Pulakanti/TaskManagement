@@ -17,7 +17,7 @@ function TaskList({ onEdit, searchQuery }) {
         );
       })
     : tasks;
-  if (filteredTasks?.length == 0) {
+  if (filteredTasks?.length === 0) {
     return (
       <div className="empty-state">
         <h3>No Matching Tasks</h3>
